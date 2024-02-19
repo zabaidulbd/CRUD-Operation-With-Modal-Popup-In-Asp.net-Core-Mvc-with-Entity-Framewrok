@@ -1,0 +1,58 @@
+﻿@model CRUDWithModalPopup.Models.DBEntities.Product
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<div>
+    <button class="btn btn-primary mb-2" id="btnAdd">Add Product</button>
+</div>
+<div class="container">
+    <table class="table table-success table-striped table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tblBody">
+        </tbody>
+    </table>
+</div>
+<div class="modal" id="ProductModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle"></h3>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" asp-for="Id" value="0" />
+                <div class="mb-2">
+                    <label asp-for="ProductName"></label>
+                    <input type="text" asp-for="ProductName" class="form-control" placeholder="Product Name" />
+                </div>
+                <div class="mb-2">
+                    <label asp-for="Price"></label>
+                    <input type="number" asp-for="Price" class="form-control" placeholder="Price" />
+                </div>
+                <div class="mb-2">
+                    <label asp-for="Qty"></label>
+                    <input type="number" asp-for="Qty" class="form-control" placeholder="Qty" />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="Save" type="submit" onclick="Insert();">Save</button>
+                    <button class="btn btn-success" id="Update" type="submit" onclick="Update();" style="display:none">Update</button>
+                    <button class="btn btn-danger" data-bs-dismiss="modal" onclick="HideModal();">Close</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/productjs.js"></script>
